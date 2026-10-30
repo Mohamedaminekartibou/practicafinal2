@@ -32,11 +32,11 @@ class _HomePageState extends State<HomePage> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
-            
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const CircleAvatar(
-                radius: 70,
-                
+                radius: 50,
+                child: Icon(Icons.person, size: 60),
               ),
               const SizedBox(height: 20),
               Text(
