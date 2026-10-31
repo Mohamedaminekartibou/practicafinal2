@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../models/persona.dart';
 
 class PersonalScreen extends StatefulWidget {
 
@@ -75,7 +76,7 @@ void dispose() {
           key: _formKey,
           child: ListView(
             children: [
-              
+
               TextFormField(
                 controller: nomController,
                 decoration: const InputDecoration(

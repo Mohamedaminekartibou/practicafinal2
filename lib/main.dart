@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
+import 'screens/personal_screen.dart';
+import 'models/persona.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +23,15 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: PersonalScreen(
+        persona: Persona(
+          nom: 'Mohamed',
+          cognoms: 'Amine',
+          email: 'mohamed@example.com',
+          contrasenya: '123456',
+          dataNaixement: DateTime(2005, 1, 1),
+        ),
+      ),
     );
   }
 }
