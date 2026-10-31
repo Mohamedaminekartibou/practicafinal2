@@ -13,16 +13,16 @@ class PersonalScreen extends StatefulWidget {
 }
 
 
-
+class _PersonalScreenState extends State<PersonalScreen> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Mi pantalla'),
+        title: const Text('Editar perfil'),
       ),
       body: const Center(
-        child: Text('Hola Flutter'),
+        child: Text('Pantalla de datos personales'),
       ),
     );
   }
