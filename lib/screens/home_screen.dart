@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Persona persona = Persona(
     nom: 'Mohamed',
-    cognoms: 'Amine',
+    cognoms: 'Kartibou',
     email: 'mohamed@example.com',
     contrasenya: '123456',
     dataNaixement: DateTime(2005, 1, 1),
