@@ -13,6 +13,8 @@ class PersonalScreen extends StatefulWidget {
 }
 
 
+
+
 class _PersonalScreenState extends State<PersonalScreen> {
 
   final _formKey = GlobalKey<FormState>();
@@ -23,7 +25,9 @@ class _PersonalScreenState extends State<PersonalScreen> {
   late TextEditingController contrasenyaController;
 
   late DateTime dataNaixement;
-    
+
+
+   // Creamos los controladores 
 @override
 void initState() {
   super.initState();
@@ -47,6 +51,17 @@ void initState() {
   dataNaixement = widget.persona.dataNaixement;
 }
 
+@override
+void dispose() {
+  nomController.dispose();
+  cognomsController.dispose();
+  emailController.dispose();
+  contrasenyaController.dispose();
+
+  super.dispose();
+}
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -54,8 +69,54 @@ void initState() {
       appBar: AppBar(
         title: const Text('Editar perfil'),
       ),
-      body: const Center(
-        child: Text('Pantalla de datos personales'),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            children: [
+              
+              TextFormField(
+                controller: nomController,
+                decoration: const InputDecoration(
+                  labelText: 'Nom',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+
+              const SizedBox(height: 15),
+
+              TextFormField(
+                controller: cognomsController,
+                decoration: const InputDecoration(
+                  labelText: 'Cognoms',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+
+              const SizedBox(height: 15),
+
+              TextFormField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  labelText: 'Correu electrònic',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+
+              const SizedBox(height: 15),
+
+              TextFormField(
+                controller: contrasenyaController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Contrasenya',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
