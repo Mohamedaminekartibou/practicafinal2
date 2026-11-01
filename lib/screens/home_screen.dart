@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/persona.dart';
+import 'personal_screen.dart';
 
 
 
@@ -57,10 +58,21 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 30),
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push( 
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => PersonalScreen(
+                        persona: persona,
+                      ),
+                    ),
+                  );
+                },
                 icon: const Icon(Icons.edit),
                 label: const Text('Editar perfil'),
               ),
+
+
               const SizedBox(height: 12),
               ElevatedButton.icon(
                 onPressed: () {},

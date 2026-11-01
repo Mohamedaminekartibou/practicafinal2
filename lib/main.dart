@@ -23,15 +23,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: PersonalScreen(
-        persona: Persona(
-          nom: 'Mohamed',
-          cognoms: 'Amine',
-          email: 'mohamed@example.com',
-          contrasenya: '123456',
-          dataNaixement: DateTime(2005, 1, 1),
-        ),
-      ),
+     home: const HomePage(),
     );
   }
 }
