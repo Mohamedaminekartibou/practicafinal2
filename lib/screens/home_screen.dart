@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/persona.dart';
 import 'personal_screen.dart';
-
+import 'widget_screen.dart';
 
 
 
@@ -81,7 +81,14 @@ class _HomePageState extends State<HomePage> {
 
               const SizedBox(height: 12),
               ElevatedButton.icon(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const WidgetScreen(),
+                    ),
+                  );
+                },
                 icon: const Icon(Icons.widgets),
                 label: const Text('Explorar widgets'),
               ),
