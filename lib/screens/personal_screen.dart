@@ -115,6 +115,25 @@ void dispose() {
                   border: OutlineInputBorder(),
                 ),
               ),
+
+              const SizedBox(height: 20),
+
+              ElevatedButton.icon(
+                onPressed: () {
+                  Persona personaActualizada = Persona(
+                    nom: nomController.text,
+                    cognoms: cognomsController.text,
+                    email: emailController.text,
+                    contrasenya: contrasenyaController.text,
+                    dataNaixement: dataNaixement,
+                  );
+
+                  Navigator.pop(context, personaActualizada);
+                },
+                icon: const Icon(Icons.save),
+                label: const Text('Guardar cambios'),
+              ),
+
             ],
           ),
         ),
