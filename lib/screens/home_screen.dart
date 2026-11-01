@@ -1,9 +1,6 @@
+
 import 'package:flutter/material.dart';
 import '../models/persona.dart';
-import 'personal_screen.dart';
-import 'widget_screen.dart';
-
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,7 +36,9 @@ class _HomePageState extends State<HomePage> {
                 radius: 50,
                 child: Icon(Icons.person, size: 60),
               ),
+
               const SizedBox(height: 20),
+
               Text(
                 '${persona.nom} ${persona.cognoms}',
                 style: const TextStyle(
@@ -47,27 +46,30 @@ class _HomePageState extends State<HomePage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+
               const SizedBox(height: 8),
+
               Text(persona.email),
+
               const SizedBox(height: 8),
+
               Text(
                 'Data de naixement: '
                 '${persona.dataNaixement.day}/'
                 '${persona.dataNaixement.month}/'
                 '${persona.dataNaixement.year}',
               ),
+
               const SizedBox(height: 30),
 
               ElevatedButton.icon(
                 onPressed: () async {
-                  final Persona? personaActualizada = await Navigator.push(
+                  final Persona? personaActualizada =
+                      await Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => PersonalScreen(
-                        persona: persona,
-                      ),
-                    ),
-                  );
+                    '/personal',
+                    arguments: persona,
+                  ) as Persona?;
 
                   if (personaActualizada != null) {
                     setState(() {
@@ -80,14 +82,10 @@ class _HomePageState extends State<HomePage> {
               ),
 
               const SizedBox(height: 12),
+
               ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const WidgetScreen(),
-                    ),
-                  );
+                  Navigator.pushNamed(context, '/widgets');
                 },
                 icon: const Icon(Icons.widgets),
                 label: const Text('Explorar widgets'),
