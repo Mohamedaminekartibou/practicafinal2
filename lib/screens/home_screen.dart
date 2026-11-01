@@ -57,9 +57,10 @@ class _HomePageState extends State<HomePage> {
                 '${persona.dataNaixement.year}',
               ),
               const SizedBox(height: 30),
+
               ElevatedButton.icon(
-                onPressed: () {
-                  Navigator.push( 
+                onPressed: () async {
+                  final Persona? personaActualizada = await Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => PersonalScreen(
@@ -67,11 +68,16 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   );
+
+                  if (personaActualizada != null) {
+                    setState(() {
+                      persona = personaActualizada;
+                    });
+                  }
                 },
                 icon: const Icon(Icons.edit),
                 label: const Text('Editar perfil'),
               ),
-
 
               const SizedBox(height: 12),
               ElevatedButton.icon(
