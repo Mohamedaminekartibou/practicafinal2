@@ -17,14 +17,15 @@ class _WidgetScreenState extends State<WidgetScreen> {
   List<String> tareasOrdenables = ['Programar en Java','Aprender Flutter','Estudiar bases de datos','Practicar SQL',];
 
 
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Explorar widgets'),
       ),
-      // parte interactiva/ Dismissible 
-    
+
+      // parte interactiva/ Dismissible
+
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
@@ -82,6 +83,7 @@ class _WidgetScreenState extends State<WidgetScreen> {
           ),
 
           // parte interactiva/ ExpansionTile
+
           const SizedBox(height: 10),
 
           ExpansionTile(
@@ -126,30 +128,34 @@ class _WidgetScreenState extends State<WidgetScreen> {
 
           const SizedBox(height: 10),
 
-          ReorderableListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: tareasOrdenables.length,
-            onReorder: (oldIndex, newIndex) {
-              setState(() {
-                if (newIndex > oldIndex) {
-                  newIndex--;
-                }
+          SizedBox(
+            height: 240,
+            child: ReorderableListView.builder(
+              buildDefaultDragHandles: false,
+              itemCount: tareasOrdenables.length,
+              onReorder: (oldIndex, newIndex) {
+                setState(() {
+                  if (newIndex > oldIndex) {
+                    newIndex--;
+                  }
 
-                final tarea = tareasOrdenables.removeAt(oldIndex);
-
-                tareasOrdenables.insert(newIndex, tarea);
-              });
-            },
-            itemBuilder: (context, index) {
-              return Card(
-                key: ValueKey(tareasOrdenables[index]),
-                child: ListTile(
-                  leading: const Icon(Icons.drag_handle),
-                  title: Text(tareasOrdenables[index]),
-                ),
-              );
-            },
+                  final tarea = tareasOrdenables.removeAt(oldIndex);
+                  tareasOrdenables.insert(newIndex, tarea);
+                });
+              },
+              itemBuilder: (context, index) {
+                return Card(
+                  key: ValueKey(tareasOrdenables[index]),
+                  child: ListTile(
+                    leading: ReorderableDragStartListener(
+                      index: index,
+                      child: const Icon(Icons.drag_handle),
+                    ),
+                    title: Text(tareasOrdenables[index]),
+                  ),
+                );
+              },
+            ),
           ),
 
           const SizedBox(height: 20),
@@ -166,14 +172,20 @@ class _WidgetScreenState extends State<WidgetScreen> {
 
           const SizedBox(height: 10),
 
-          SizedBox(
-            height: 250,
+         SizedBox(
+          height: 250,
+          width: double.infinity,
+          child: ClipRect(
             child: InteractiveViewer(
+              panEnabled: true,
+              scaleEnabled: true,
+              constrained: false,
+              boundaryMargin: const EdgeInsets.all(200),
               minScale: 0.5,
               maxScale: 4,
               child: Container(
-                width: 300,
-                height: 220,
+                width: 500,
+                height: 400,
                 decoration: BoxDecoration(
                   color: Colors.deepPurple,
                   borderRadius: BorderRadius.circular(20),
@@ -196,12 +208,18 @@ class _WidgetScreenState extends State<WidgetScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Puedes ampliar y mover este contenido',
+                        style: TextStyle(color: Colors.white),
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
           ),
+        ),
 
           const SizedBox(height: 30),
         ],
